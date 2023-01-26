@@ -9,5 +9,5 @@
 2. Установить библиотеки ```pip install -r requirements.txt```
 3. Создать папки ```input``` и ```photo```
 ## Запуск
-1.В папку ```input``` переместить файлы формата ```messagesXXX.html```
+1. В папку ```input``` переместить файлы формата ```messagesXXX.html```
 2. Открыть файл main.py
