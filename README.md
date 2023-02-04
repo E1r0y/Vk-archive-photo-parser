@@ -1,4 +1,4 @@
-# Vk-archive-photo-parcer
+# Vk-archive-photo-parser
 Скрипт позволяет получить ссылки и скачать фотографии из любого диалога, используя файлы из [официального архива ВК](https://vk.com/data_protection?section=rules&scroll_to_archive=1), сортируя скачанное в хронологическом порядке
 ## Алгоритм
 1. Сортировка файлов типа ```messagesXXX.html``` в нужном порядке
