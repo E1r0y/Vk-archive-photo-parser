@@ -1,11 +1,12 @@
 import asyncio
 import os
 
-from funcs import rename_files, grabber, downloader_async
+from funcs import downloader_async, grabber, rename_files
 
 
 async def main():
-    print('''
+    print(
+        '''
  __      _ _  __                 _     _                   _           _                                        
  \ \    / / |/ /                | |   (_)                 | |         | |                                       
   \ \  / /| ' /    __ _ _ __ ___| |__  ___   _____   _ __ | |__   ___ | |_ ___    _ __   __ _ _ __ ___  ___ _ __ 
@@ -15,25 +16,38 @@ async def main():
                                                     | |                          | |                            
                                                     |_|                          |_|                            
                                                                                                         By @E1r0y
-    ''')
+    '''
+    )
 
-    input('Press Enter')
-    folder_name = rename_files()
-    print('Файлы отсортированы.')
+    input("Press Enter")
+
+    try:
+        folder_name = rename_files()
+    except (FileNotFoundError, ValueError) as err:
+        print(err)
+        input("Press Enter to close")
+        return
+
+    print("Файлы отсортированы.")
     amount = grabber(folder_name)
-    print(f'Найдено {amount} фото.')
-    await downloader_async()
-    print('Фотографии находятся в /photo')
-    input('Press Enter to close')
+    print(f"Найдено {amount} фото.")
+
+    if amount > 0:
+        await downloader_async()
+        print("Фотографии находятся в /photo")
+    else:
+        print("Ссылки на фото не найдены, загрузка пропущена.")
+
+    input("Press Enter to close")
 
 
 def clear():
-    if os.sys.platform == 'win32':
-        os.system('cls')
+    if os.sys.platform == "win32":
+        os.system("cls")
     else:
-        os.system('clear')
+        os.system("clear")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     clear()
     asyncio.run(main())
